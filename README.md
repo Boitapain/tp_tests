@@ -21,18 +21,8 @@ Cette application est une API CRUD développée en Python (via **FastAPI**) perm
    ```
 4. **Lancer l'application** :
    ```bash
-   python -m uvicorn app.main:app --reload
+   python3 -m uvicorn app.main:app --reload
    ```
-
-## Déploiement de l'Infrastructure Cible (Docker)
-
-Comme stipulé dans le contexte, Jenkins et SonarQube simulent des serveurs linux dédiés. Un fichier `docker-compose.yml` est fourni pour instancier l'environnement DevOps en une commande :
-
-```bash
-docker-compose up -d
-```
-- **Jenkins** : accessible sur `http://localhost:8080`
-- **SonarQube** : accessible sur `http://localhost:9000`
 
 ## Documentation de l'API CRUD
 
