@@ -34,8 +34,33 @@ jobs:
         radon cc app -s -a
 
     - name: SonarQube Scan
-      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      id: sonarqube-scan
       uses: SonarSource/sonarqube-scan-action@v4
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+    - name: SonarQube Quality Gate
+      uses: SonarSource/sonarqube-quality-gate-action@v1
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+    - name: Generate SonarQube Report
+      if: always() && steps.sonarqube-scan.outcome == 'success'
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        GITHUB_EVENT_NAME: ${{ github.event_name }}
+        GITHUB_REF_NAME: ${{ github.ref_name }}
+        GITHUB_EVENT_PATH: ${{ github.event_path }}
+      run: |
+        python .github/scripts/generate_sonar_report.py
+
+    - name: Upload SonarQube Report
+      if: always() && steps.sonarqube-scan.outcome == 'success'
+      uses: actions/upload-artifact@v4
+      with:
+        name: sonarqube-report
+        path: |
+          sonar-report.md
+          sonar-report.json
+
