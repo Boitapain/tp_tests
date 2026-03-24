@@ -1,5 +1,8 @@
 # Application Gestion de Produits - CI/CD & Qualité
 
+[![Sonarcloud Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=Boitapain_tp_tests&metric=alert_status)](https://sonarcloud.io/dashboard?id=Boitapain_tp_tests)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Boitapain_tp_tests&metric=coverage)](https://sonarcloud.io/dashboard?id=Boitapain_tp_tests)
+
 Cette application est une API CRUD développée en Python (via **FastAPI**) permettant de gérer des produits pour une boutique en ligne. Ce projet intègre les meilleures pratiques DevOps : tests unitaires, mesure de la couverture, analyse statique et complexité, ainsi que l'intégration à des pipelines CI/CD (GitHub Actions, Jenkins) et l'intégration continue de la qualité avec SonarQube.
 
 ## Prérequis
