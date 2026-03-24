@@ -24,6 +24,16 @@ Cette application est une API CRUD développée en Python (via **FastAPI**) perm
    python3 -m uvicorn app.main:app --reload
    ```
 
+## Lancement avec Docker
+
+Vous pouvez également lancer l'application dans un conteneur Docker.
+
+1. **Lancer avec Docker Compose** :
+   ```bash
+   docker compose up --build
+   ```
+2. **Accéder à l'application** : `http://localhost:8000/docs`
+
 ## Documentation de l'API CRUD
 
 Une fois l'application lancée, une interface d'utilisation interactive et complète de l'API (Swagger UI) est générée automatiquement et accessible ici :  
@@ -72,7 +82,3 @@ Le fichier `.github/workflows/ci.yml` orchestre un pipeline automatisé à chaqu
 1. **Tests & Couverture** : Installe les dépendances, exécute les tests, génère le rapport de couverture et évalue la complexité.
 2. **SonarQube Scan** : Envoie le rapport de couverture et procède à l'analyse sur le serveur Sonar (nécessite de configurer les secrets GitHub `SONAR_TOKEN`).
 
-### Jenkins
-
-Le fichier `Jenkinsfile` décrit le pipeline CI pour Jenkins. Il contient les étapes analogues (Build & Tests locals + Analyse Qualité Sonar Scanner).  
-Afin qu'il fonctionne parfaitement, assurez d'avoir configuré sur votre serveur Jenkins les outils `SonarQubeScanner` et `SonarQubeServer`.
